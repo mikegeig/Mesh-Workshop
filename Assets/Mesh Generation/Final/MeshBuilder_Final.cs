@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MeshBuilder : MonoBehaviour 
+public class MeshBuilder_Final : MonoBehaviour 
 {
 	MeshFilter filter;
 	Mesh mesh;
@@ -12,7 +12,6 @@ public class MeshBuilder : MonoBehaviour
 		mesh = new Mesh();
 		filter.mesh = mesh;
 	}
-	
 
 	void Update () 
 	{
@@ -148,17 +147,11 @@ public class MeshBuilder : MonoBehaviour
 		tris[34] = 3;
 		tris[35] = 7;
 		
-		Vector2[] uvs = new Vector2[4];
-		uvs[0] = new Vector2(0, 0);
-		uvs[1] = new Vector2(0, 1);
-		uvs[2] = new Vector2(1, 1);
-		uvs[3] = new Vector2(1, 0);
-		
 		mesh.vertices = verts;
 		mesh.triangles = tris;
-		//mesh.uv = uvs;
 		
 		mesh.RecalculateNormals();
+		mesh.RecalculateBounds();
 	}
 
 	void MakeCubeFromQuads()
